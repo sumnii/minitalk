@@ -1,0 +1,5 @@
+# ninja log v5
+1	90	1654914707715368086	CMakeFiles/minitalk.dir/main.c.o	97bdeeab41d693fa
+91	165	1654914707791034734	minitalk	daec8b6caf2ccc99
+0	76	1654914899636783803	CMakeFiles/minitalk.dir/server.c.o	4834ff68897fb0da
+0	109	1654914914258300446	CMakeFiles/minitalk.dir/client.c.o	ca5a5e9212e49800

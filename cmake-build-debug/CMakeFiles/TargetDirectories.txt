@@ -1,0 +1,3 @@
+/Users/sumsong/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/minitalk.dir
+/Users/sumsong/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/sumsong/CLionProjects/minitalk/cmake-build-debug/CMakeFiles/rebuild_cache.dir
