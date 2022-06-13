@@ -1,29 +1,38 @@
 #include <unistd.h>
 #include <stdio.h>
-#include <signal.h>
+#include "minitalk.h"
+
+void	ft_get_signal(void);
+void	*ft_write_sig(int signum);
+void	test(int sig);
 
 int	main()
 {
-	printf("server pid : %d", getpid());
-	pause();
-	ft_get_signal();
+	printf("server pid : ");
+	printf("%d\n", getpid());
+	signal(SIGUSR1, (void *)ft_write_sig);
+	signal(SIGUSR2, (void *)ft_write_sig);
+	while (1)
+		pause();
 }
 
-ft_get_signal()
+void	*ft_write_sig(int signum)
 {
-	static char	*g_message;
+	static char	chr = 0;
+	static char	bit_cnt = 0;
 
-	g_message = (char *)malloc(sizeof(char));
-	g_message = 0;
-	signal(SIGUSR1, ft_write_sig(SIGUSR1));
-	signal(SIGUSR2, ft_write_sig(SIGUSR2));
-}
-
-ft_write_sig(int signum)
-{
+	chr <<= 1;
 	if (signum == SIGUSR1)
-		g_message += g_message | 1;
+		chr = chr | 1;
 	else
-		g_message += g_message | 0;
-	g_message << 1
+		chr = chr | 0;
+	++bit_cnt;
+	if (bit_cnt == 8)
+	{
+		write(1, &chr, 1);
+		if (chr == 0)
+			write(1, "\n", 1);
+		bit_cnt = 0;
+	}
+	return (0);
 }

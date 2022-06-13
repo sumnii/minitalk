@@ -1,41 +1,57 @@
 #include <unistd.h>
 #include <stdlib.h>
-#include <signal.h>
+#include <stdio.h>
+#include "minitalk.h"
 
 void	ft_send_str(pid_t pid, char *message);
 void	ft_send_signal(pid_t pid, char chr);
 
-int main(int argc, char **argv) {
-	pid_t	pid;
+int main(int argc, char **argv)
+{
+	int	pid;
 	char	*message;
 
-	pid = atoi(argv[1]);
+	if (argc != 3)
+	{
+		printf("type => \"./client <pid> <string>\"\n");
+		exit (1);
+	}
+	pid = ft_atoi(argv[1]);
 	message = argv[2];
 	ft_send_str(pid, message);
 }
 
 void	ft_send_str(pid_t pid, char *message)
 {
-	while (message)
+	while (*message)
 	{
-		ft_send_signal(*message);
+		ft_send_signal(pid, *message);
 		++message;
 	}
-	ft_send_signal('\0');
+	ft_send_signal(pid, '\0');
 }
 
 void	ft_send_signal(pid_t pid, char chr)
 {
-	char	cnt;
+	char			cnt;
+	unsigned char	bit;
 
-	cnt = 8;
-	while (cnt > 0)
+	cnt = 0;
+	bit = 128;
+	while (++cnt <= 8)
 	{
-		if ((chr >> --cnt) & 1)
-			if (kill(pid, SIGUSR1) < 0)
-				exit(0);
+		if ((chr & bit) == bit)
+		{
+			if (kill(pid, SIGUSR1) == -1)
+				exit(1);
+			usleep(50);
+		}
 		else
-			if (kill(pid, SIGUSR2) < 0)
-				exit(0);
+		{
+			if (kill(pid, SIGUSR2) == -1)
+				exit(1);
+			usleep(50);
+		}
+		bit >>= 1;
 	}
 }
