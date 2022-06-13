@@ -2,9 +2,7 @@
 #include <stdio.h>
 #include "minitalk.h"
 
-void	ft_get_signal(void);
-void	*ft_write_sig(int signum);
-void	test(int sig);
+void	ft_write_sig(int signum);
 
 int	main()
 {
@@ -16,7 +14,7 @@ int	main()
 		pause();
 }
 
-void	*ft_write_sig(int signum)
+void	ft_write_sig(int signum)
 {
 	static char	chr = 0;
 	static char	bit_cnt = 0;
@@ -34,5 +32,4 @@ void	*ft_write_sig(int signum)
 			write(1, "\n", 1);
 		bit_cnt = 0;
 	}
-	return (0);
 }
