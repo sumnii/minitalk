@@ -1,20 +1,29 @@
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/14 14:05:35 by sumsong           #+#    #+#             */
+/*   Updated: 2022/06/14 14:06:14 by sumsong          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	ft_send_str(pid_t pid, char *message);
 void	ft_send_signal(pid_t pid, char chr);
 void	ft_write_sig(int signum);
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	int		pid;
 	char	*message;
 
 	if (argc != 3)
 	{
-		printf("type => \"./client <pid> <string>\"\n");
+		ft_putstr_fd("type => \"./client <pid> <string>\"\n", 1);
 		exit (1);
 	}
 	signal(SIGUSR1, (void *)ft_write_sig);
