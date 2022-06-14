@@ -3,4 +3,4 @@ project(minitalk C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(minitalk client.c server.c)
+add_executable(minitalk client.c libft/*.c)

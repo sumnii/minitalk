@@ -18,11 +18,9 @@ int main(int argc, char **argv)
 		exit (1);
 	}
 	signal(SIGUSR1, (void *)ft_write_sig);
-	signal(SIGUSR2, (void *)ft_write_sig);
 	pid = ft_atoi(argv[1]);
 	message = argv[2];
 	ft_send_str(pid, message);
-	usleep(10);
 	while (1)
 		pause();
 }
@@ -32,6 +30,7 @@ void	ft_send_str(pid_t pid, char *message)
 	while (*message)
 	{
 		ft_send_signal(pid, *message);
+		usleep(40);
 		++message;
 	}
 	ft_send_signal(pid, '\0');
@@ -50,14 +49,13 @@ void	ft_send_signal(pid_t pid, char chr)
 		{
 			if (kill(pid, SIGUSR1) == -1)
 				exit(1);
-			pause();
 		}
 		else
 		{
 			if (kill(pid, SIGUSR2) == -1)
 				exit(1);
-			pause();
 		}
+		usleep(50);
 		bit >>= 1;
 	}
 }
@@ -65,10 +63,13 @@ void	ft_send_signal(pid_t pid, char chr)
 void	ft_write_sig(int signum)
 {
 	if (signum == SIGUSR1)
-		write(1, ".", 1);
-	else if (signum == SIGUSR2)
 	{
 		write(1, "done.\n", 6);
 		exit (0);
+	}
+	else
+	{
+		write(1, "error.\n", 7);
+		exit (1);
 	}
 }
