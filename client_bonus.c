@@ -6,11 +6,11 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:05:35 by sumsong           #+#    #+#             */
-/*   Updated: 2022/06/14 14:06:14 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:35:55 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	ft_send_str(pid_t pid, char *message);
 void	ft_send_signal(pid_t pid, char chr);

@@ -6,11 +6,11 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:06:45 by sumsong           #+#    #+#             */
-/*   Updated: 2022/06/14 14:08:13 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:36:01 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	ft_write_sig(int signum)
 {
