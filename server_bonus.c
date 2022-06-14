@@ -6,7 +6,7 @@
 /*   By: sumsong <sumsong@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 14:06:45 by sumsong           #+#    #+#             */
-/*   Updated: 2022/06/14 14:36:01 by sumsong          ###   ########.fr       */
+/*   Updated: 2022/06/14 14:43:29 by sumsong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	ft_sigaction(int signum, siginfo_t *info, void *ucp)
 {
 	static char	chr = 0;
 	static char	bit_cnt = 0;
-	static char	first_check = 0;
 
 	(void)ucp;
 	chr <<= 1;
